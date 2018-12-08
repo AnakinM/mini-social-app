@@ -14,69 +14,69 @@
         <link rel="stylesheet" type="text/css" href="{% static 'welcomeview/styles.css' %}">
     </head>
     <body>    
-                  <main role="main">
+        <main role="main">
               
-                    <!-- Main jumbotron -->
-                    <div class="jumbotron">
-                      <div class="container">
-                        <h1 class="display-3">Welcome to Mini Social App</h1>
-                        <p>The best social experience you'll ever have</p>
-                        <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
-                      </div>
+            <!-- Main jumbotron -->
+            <div class="jumbotron">
+                <div class="container">
+                    <h1 class="display-3">Welcome to Mini Social App</h1>
+                    <p>The best social experience you'll ever have</p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                </div>
+            </div>
+              
+            <div class="container">
+
+                <!-- Row of columns -->
+                <div class="row text-center">
+                    <div class="col-md-6">
+
+                        <!-- Sign up form -->
+                        <h2>Sign up</h2>
+                        <form class="form-signin">
+                            <div class="form-label-group">
+                                <label for="inputEmail">Email address</label>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            </div>
+                            <div class="form-label-group">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+                            </div>
+                            <div class="form-label-group">
+                                <label for="inputPassword">Type password again</label>
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+                            </div>  
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                            </form>
+                        </div>
+
+                    <div class="col-md-6">
+
+                        <!-- Sign in form -->
+                        <h2>Log in</h2>
+                        <form class="form-signin">
+                            <div class="form-label-group">
+                                <label for="inputEmail">Email address</label>
+                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                            </div>
+                            <div class="form-label-group">
+                                <label for="inputPassword">Password</label>
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+                            </div>
+                                
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+                        </form>
                     </div>
+                </div>
               
-                    <div class="container">
-                      <!-- Row of columns -->
-                      <div class="row text-center">
-                        <div class="col-md-6">
-                          <h2>Sign up</h2>
-                          <!-- Sign up form -->
-                          <form class="form-signin">
-                                <div class="form-label-group">
-                                    <label for="inputEmail">Email address</label>
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                                </div>
-                                <div class="form-label-group">
-                                    <label for="inputPassword">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
-                                </div>
-                                <div class="form-label-group">
-                                    <label for="inputPassword">Type password again</label>
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
-                                </div>
-                                
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
-                            </form>
-                        </div>
-
-                        <div class="col-md-6">
-                          <h2>Log in</h2>
-
-                          <!-- Sign in form -->
-                          <form class="form-signin">
-                                <div class="form-label-group">
-                                    <label for="inputEmail">Email address</label>
-                                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                                </div>
-                                <div class="form-label-group">
-                                    <label for="inputPassword">Password</label>
-                                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
-                                </div>
-                                
-                                <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
-                            </form>
-                        </div>
-                      </div>
+                <hr>
               
-                      <hr>
+            </div> <!-- /container -->  
+        </main>
               
-                    </div> <!-- /container -->
-              
-                  </main>
-              
-                  <footer class="container">
+        <footer class="container">
             <p>&copy; Mateusz Anikiej 2018</p>
-                  </footer>
+        </footer>
               
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
