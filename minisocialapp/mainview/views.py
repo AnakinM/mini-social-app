@@ -3,4 +3,4 @@ from django.http import HttpResponse
 
 # Create your views here.
 def index(request):
-    return HttpResponse("You are in your profile")
+    return render(request, 'mainview/profile.html')
