@@ -33,19 +33,32 @@
 
                         <!-- Sign up form -->
                         <h2>Sign up</h2>
-                        <form class="form-signin text-left">
+                        <form class="form-signin text-left" method="POST" action="welcome/signup/">
+                            {% csrf_token %}
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                                <input type="text" id="inputUsername" class="form-control" name="username" maxlength="150" placeholder="Username">
+                                <label for="inputUsername">Username</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" id="inputFirstName" class="form-control" name="first_name" maxlength="30" placeholder="First name">
+                                <label for="inputFirstName">First name</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="text" id="inputLastName" class="form-control" name="last_name" maxlength="30" placeholder="Last name">
+                                <label for="inputLastName">Last name</label>
+                            </div>
+                            <div class="form-label-group">
+                                <input type="email" id="inputEmail" class="form-control" name="email" maxlength="254" placeholder="Email address">
                                 <label for="inputEmail">Email address</label>
                             </div>
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+                                <input type="password" id="inputPassword" class="form-control" name="password1" placeholder="Password"> 
                                 <label for="inputPassword">Password</label>
                             </div>
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+                                <input type="password" id="inputPassword" class="form-control" name="password2" placeholder="Password"> 
                                 <label for="inputPassword">Type password again</label>
-                            </div>  
+                            </div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
                         </form>
                     </div>
@@ -54,13 +67,14 @@
 
                         <!-- Sign in form -->
                         <h2>Log in</h2>
-                        <form class="form-signin text-left">
+                        <form class="form-signin text-left" method="POST" action="welcome/login/">
+                            {% csrf_token %}
                             <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required>
-                                <label for="inputEmail">Email address</label>
+                                <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" maxlength="150">
+                                <label for="inputUsername">Username</label>
                             </div>
                             <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> 
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"> 
                                 <label for="inputPassword">Password</label>
                             </div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
