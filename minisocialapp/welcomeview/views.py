@@ -3,7 +3,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from .forms import SignUpForm
-from mainview.views import index as mainview_index
 
 # Create your views here.
 def index(request):
@@ -21,7 +20,7 @@ def signup(request):
             return redirect('home')
     else:
         form = SignUpForm()
-    return render(request, 'welcomeview/signup.html', {'form': form})
+    return render(request, 'welcomeview/index.html', {'form': form})
 
 
 def login_user(request):
@@ -30,6 +29,6 @@ def login_user(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user)
-        return mainview_index(request)
+        return redirect('home')
     else:
         return HttpResponse("Authentication failed.")
