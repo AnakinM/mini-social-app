@@ -21,7 +21,7 @@
                 <div class="container">
                     <h1 class="display-3">Welcome to Mini Social App</h1>
                     <p>The best social experience you'll ever have</p>
-                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
+                    <!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
                 </div>
             </div>
               
@@ -35,47 +35,44 @@
                         <h2>Sign up</h2>
                         <form class="form-signin text-left" method="POST" action="welcome/signup/">
                             {% csrf_token %}
-                            <div class="form-label-group">
-                                <input type="text" id="inputUsername" class="form-control" name="username" maxlength="150" placeholder="Username">
-                                <label for="inputUsername">Username</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="username" maxlength="150" placeholder="Username">
                             </div>
-                            <div class="form-label-group">
-                                <input type="text" id="inputFirstName" class="form-control" name="first_name" maxlength="30" placeholder="First name">
-                                <label for="inputFirstName">First name</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="first_name" maxlength="30" placeholder="First name">
                             </div>
-                            <div class="form-label-group">
-                                <input type="text" id="inputLastName" class="form-control" name="last_name" maxlength="30" placeholder="Last name">
-                                <label for="inputLastName">Last name</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="last_name" maxlength="30" placeholder="Last name">
                             </div>
-                            <div class="form-label-group">
-                                <input type="email" id="inputEmail" class="form-control" name="email" maxlength="254" placeholder="Email address">
-                                <label for="inputEmail">Email address</label>
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" maxlength="254" placeholder="Email address">
                             </div>
-                            <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" name="password1" placeholder="Password"> 
-                                <label for="inputPassword">Password</label>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password1" placeholder="Password"> 
                             </div>
-                            <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" name="password2" placeholder="Password"> 
-                                <label for="inputPassword">Type password again</label>
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password2" placeholder="Password"> 
                             </div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign up</button>
+                                {% for field in form %}
+                                    {% for error in field.errors %}
+                                    <p style="color:red">{{ field.label_tag}} {{ error }}</p>
+                                    {% endfor %}
+                                {% endfor %}
                         </form>
                     </div>
 
                     <div class="col-md-6">
 
                         <!-- Sign in form -->
-                        <h2>Log in</h2>
+                        <h2>Sign in</h2>
                         <form class="form-signin text-left" method="POST" action="welcome/login/">
                             {% csrf_token %}
-                            <div class="form-label-group">
-                                <input type="text" id="inputUsername" class="form-control" placeholder="Username" name="username" maxlength="150">
-                                <label for="inputUsername">Username</label>
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Username" name="username" maxlength="150">
                             </div>
-                            <div class="form-label-group">
-                                <input type="password" id="inputPassword" class="form-control" placeholder="Password" name="password"> 
-                                <label for="inputPassword">Password</label>
+                            <div class="form-group">
+                                <input type="password" class="form-control" placeholder="Password" name="password"> 
                             </div>
                                 <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
                         </form>
