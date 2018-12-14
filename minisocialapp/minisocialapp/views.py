@@ -13,4 +13,4 @@ def is_user_logged_in(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('home')#welcomeview_index(request)
+    return redirect('home')
