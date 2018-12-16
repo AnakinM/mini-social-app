@@ -35,8 +35,15 @@
                 </form>
             </div>
         </nav>
-      
+
         <main role="main" class="container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
             <div class="jumbotron">
               <h1>Your board is coming soon!</h1>
               <p class="lead">All your and your frien's posts will be visible here</p>

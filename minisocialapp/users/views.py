@@ -1,26 +1,23 @@
 from django.contrib.auth import login, authenticate
 from django.shortcuts import render, redirect, render_to_response
-from django.http import HttpResponse
+from django.contrib import messages
 
-from .forms import SignUpForm
+from .forms import UserRegisterForm
 
-def index(request):
-    return render(request, 'users/login.html')
-
-def signup(request):
+def register(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = UserRegisterForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
+            messages.success(request, f'Your account has been successfuly created.')
             return redirect('home')
     else:
-        form = SignUpForm()
-    return render(request, 'welcomeview/signup-page.html', {'form':form})
-
+        form = UserRegisterForm()
+    return render(request, 'users/register.html', {'form':form})
 
 def login_user(request):
     if request.method == 'POST':
@@ -31,6 +28,6 @@ def login_user(request):
             login(request, user)
             return redirect('home')
         else:
-            return render(request, 'welcomeview/login-page.html', {'username': username, 'error': True})
+            return render(request, 'users/login.html', {'username': username, 'error': True})
     else:
-        return render(request, 'welcomeview/login-page.html', {})
+        return render(request, 'users/login.html', {})
