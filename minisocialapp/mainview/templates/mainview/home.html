@@ -21,14 +21,16 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="logout/">Log out</a>
-                    </li>
-                </ul>
+                <div class="navbar-nav mr-auto">
+                    {% if user.is_authenticated %}
+                        <a class="nav-link" href="{% url 'mainview:profile' %}">Home</a>
+                        <a class="nav-item nav-link" href="{% url 'mainview:post-create' %}">New Post</a>
+                        <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                        <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                        <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                    {% endif %}
+                </div>
                 <form class="form-inline mt-2 mt-md-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -44,10 +46,8 @@
                     </div>
                 {% endfor %}
             {% endif %}
-            <div class="jumbotron">
-              <h1>Your board is coming soon!</h1>
-              <p class="lead">All your and your frien's posts will be visible here</p>
-            </div>
+            {% block content %}
+            {% endblock content %}
         </main>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
