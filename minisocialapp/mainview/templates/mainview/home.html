@@ -38,16 +38,37 @@
             </div>
         </nav>
 
-        <main role="main" class="container">
-            {% if messages %}
-                {% for message in messages %}
-                    <div class="alert alert-{{ message.tags }}">
-                        {{ message }}
+        <main role="main" class="container-fluid">
+            <div class="row">
+                <div class="col col-sm"></div>
+                <div class="col-6">
+                    {% if messages %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                    {% block content %}
+                    {% endblock content %}
+                </div>
+                <div class="col col-sm"></div>
+                <aside class="col-3 px-0 fixed-top sticky-top flex-grow-1">
+                    <div class="list-group w-100">
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
+                        <a href="#" class="list-group-item">Link</a>
                     </div>
-                {% endfor %}
-            {% endif %}
-            {% block content %}
-            {% endblock content %}
+                </aside>
+            </div>
+            
         </main>
 
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
