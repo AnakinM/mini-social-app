@@ -40,7 +40,7 @@ def ProfileDetailsView(request, username):
     if User.objects.filter(username=username).exists():
         user = User.objects.get(username=username)
 
-        posts = Post.objects.filter(author=user.pk)
+        posts = Post.objects.filter(author=user.pk).order_by('-date_posted')
 
         gender = ''
         if user.profile.gender == 'M':

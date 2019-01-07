@@ -3,16 +3,29 @@
     <article class="media content-section">
         <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ object.author }}</a>
-            <small class="text-muted">{{ object.date_posted|date:"j F Y" }}</small>
-            {% if object.author == user%}
+            <a class="mr-2" href="{% url 'profile-details' author %}">{{ author }}</a>
+            <small class="text-muted">{{ date_posted|date:"j F Y" }}</small>
+            {% if author == user%}
             <div>
-                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'mainview:post-update' object.id %}">Update</a>
-                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'mainview:post-delete' object.id %}">Delete</a>
+                <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'mainview:post-update' post.pk %}">Update</a>
+                <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'mainview:post-delete' post.pk %}">Delete</a>
             </div>
             {% endif %}
         </div>
-        <p class="article-content">{{ object.content }}</p>
+        <p class="article-content">{{ content }}</p>
         </div>
     </article>
+    <hr>
+    <a class="btn btn-secondary mb-4" href="{% url 'mainview:comment-create' post.pk %}">Comment</a>
+    {% for comment in comments %}
+        <article class="media">
+        <div class="article-metadata">
+                <div class="media-body">
+                <a class="mr-2" href="{% url 'profile-details' comment.author %}">{{ comment.author }}</a>
+                <small class="text-muted">{{ comment.date_posted|date:"j.n.Y  H:i:s" }}</small>
+            </div>
+            <p class="article-content">{{ comment.content }}</p>
+        </div>
+        </article>
+    {% endfor %}
 {% endblock content %}
