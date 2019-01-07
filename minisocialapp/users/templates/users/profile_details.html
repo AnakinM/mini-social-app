@@ -1,0 +1,44 @@
+{% extends "mainview/home.html" %}
+{% block content %}
+    <div class="media">
+        <img class="mr-3 rounded-circle article-img" src="{{ image.url }}" alt="Profile Image">
+        <div class="media-body">
+            <h5 class="mt-0">{{ first_name }} {{ last_name }}</h5>
+            <p>{{ gender }}</p>
+
+            {% if age %}
+                <p>{{ age }} years old</p>
+            {% endif %}
+
+            {% if town and country %}
+                <p>Lives in {{ town }}, {{ country }}</p>
+            {% elif town %}
+                <p>Lives in {{ town }}</p>
+            {% elif country %}
+                <p>Lives in {{ country }}</p>
+            {% endif %}
+
+            {% if company %}
+                <p>Works at {{ company }}</p>
+            {% endif %}
+
+        </div>
+    </div>
+    {% for post in posts %}
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#">{{ post.author }}</a>
+                <small class="text-muted">{{ post.date_posted|date:"j F Y" }}</small>
+                {% if post.author == user %}
+                    <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'mainview:post-update' post.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'mainview:post-delete' post.id %}">Delete</a>
+                    </div>
+                {% endif %}
+            </div>
+            <p class="article-content">{{ post.content }}</p>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content %}

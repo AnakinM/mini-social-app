@@ -37,12 +37,13 @@ class Profile(models.Model):
 
     #We need to override save method to provide our own functionality
     def save(self, *args, **kwargs):
-        
+
         #We do't want user to be able to set his age on his own to avoid
         #it being different from his actual age calculated from his birth date.
         #So as we set editable=False on the field before, now we need to calculate
         #it on our own and save it to database.
-        self.age = calculate_age(self.birth_date)
+        if self.birth_date:
+            self.age = calculate_age(self.birth_date)
         super().save(*args, **kwargs)
 
         #To avoid keeping large profile pictures on server we need to resize them,
