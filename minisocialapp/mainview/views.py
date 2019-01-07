@@ -83,8 +83,8 @@ def CreateComment(request, pk):
             comment.post = post
             comment.save()
             
-            messages.success(request, f'Your comment was created.')
-            return redirect('mainview:home')
+            #messages.success(request, f'Your comment was created.')
+            return redirect('mainview:post-detail', pk)
     else:
         form = CommentCreateForm()
 
