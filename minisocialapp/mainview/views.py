@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import messages
 from .models import Post, Comment
@@ -17,6 +18,7 @@ class PostListView(ListView):
     template_name = 'mainview/posts.html'
     context_object_name = 'posts'
     ordering = ['-date_posted']
+
     
 class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
@@ -92,3 +94,32 @@ def CreateComment(request, pk):
         'form': form,
     }
     return render(request, 'mainview/comment_form.html', context)
+
+def SearchUserBar(request, querry):
+    users = []
+    if querry == 'all':
+        users = User.objects.all()
+    else:
+        users.append(User.objects.get(username=querry))
+    print(request.POST)
+
+    if users:
+        return render(request, 'mainview/user_list.html', {'users': users})
+    else:
+        messages.warning(request, f'User not found')
+        return redirect('mainview:home')
+
+def SearchUser(request):
+    users = []
+    querry = request.GET.get('search_box', None)
+    if querry == 'all':
+        users = User.objects.all()
+    else:
+        users.append(User.objects.get(username=querry))
+    print(request.POST)
+
+    if users:
+        return render(request, 'mainview/user_list.html', {'users': users})
+    else:
+        messages.warning(request, f'User not found')
+        return redirect('mainview:home')

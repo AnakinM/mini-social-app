@@ -1,0 +1,12 @@
+{% extends "mainview/home.html" %}
+{% block content %} 
+    {% for user in users %}
+        <article class="media content-section">
+            <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="{% url 'profile-details' user.username %}">{{ user.first_name }} {{ user.last_name }}</a>
+            </div>
+            </div>
+        </article>
+    {% endfor %}
+{% endblock content%}
