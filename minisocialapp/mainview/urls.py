@@ -5,7 +5,7 @@ from . import views
 app_name = 'mainview'
 urlpatterns = [
     path('', PostListView.as_view(), name='home'),
-    path('search/<str:querry>', SearchUser, name='search-user-bar'),
+    #path('search/<str:querry>', SearchUser, name='search-user-bar'),
     path('search/', SearchUser, name='search-user'),
     path('post/<int:pk>/', PostDetailView, name='post-detail'),
     path('post/<int:pk>/comment/', CreateComment, name='comment-create'),

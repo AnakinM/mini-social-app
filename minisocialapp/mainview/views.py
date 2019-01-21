@@ -95,19 +95,19 @@ def CreateComment(request, pk):
     }
     return render(request, 'mainview/comment_form.html', context)
 
-def SearchUserBar(request, querry):
-    users = []
-    if querry == 'all':
-        users = User.objects.all()
-    else:
-        users.append(User.objects.get(username=querry))
-    print(request.POST)
+# def SearchUserBar(request, querry):
+#     users = []
+#     if querry == 'all':
+#         users = User.objects.all()
+#     else:
+#         users.append(User.objects.get(username=querry))
+#     print(request.POST)
 
-    if users:
-        return render(request, 'mainview/user_list.html', {'users': users})
-    else:
-        messages.warning(request, f'User not found')
-        return redirect('mainview:home')
+#     if users:
+#         return render(request, 'mainview/user_list.html', {'users': users})
+#     else:
+#         messages.warning(request, f'User not found')
+#         return redirect('mainview:home')
 
 def SearchUser(request):
     users = []
